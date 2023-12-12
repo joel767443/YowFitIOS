@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @AppStorage("loggedIn") var isLoggedIn: Bool = true
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        IntroView()
     }
 }
 

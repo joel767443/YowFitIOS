@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct YoKachApp: App {
+    
+    @StateObject private var userViewModel = UserViewModel(service: UserService())
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(userViewModel)
         }
     }
 }
