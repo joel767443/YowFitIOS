@@ -32,6 +32,7 @@ class UserViewModel: ObservableObject {
         case true:
             isLoading = false
             hasError = false
+            isLoggedIn = true
             allerMessage = response.message
             showAlert.toggle()
             break
@@ -68,19 +69,20 @@ class UserViewModel: ObservableObject {
     
     func logOut() async throws {
         isLoading = true
-        let status = try await service.logout()
+        let response = try await service.logout()
         
-        switch status {
-        case true:
-            isLoading = false
-            isLoggedIn = false
-            break
-            
-        case false:
-            isLoading = false
-            hasError = true
-            allerMessage = "Logout failed."
-            break
-        }
+//        switch response.status {
+//        case true:
+//            isLoading = false
+//            isLoggedIn = false
+//            break
+//            
+//        case false:
+//            isLoading = false
+//            hasError = true
+//            allerMessage = "Logout failed."
+//            showAlert.toggle()
+//            break
+//        }
     }
 }
